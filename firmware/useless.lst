@@ -1,0 +1,398 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.4.3 #9233 (May 15 2015) (Mac OS X i386)
+                                      4 ; This file was generated Wed May 20 22:05:16 2015
+                                      5 ;--------------------------------------------------------
+                                      6 	.module useless
+                                      7 	.optsdcc -mstm8
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _main
+                                     13 	.globl _error
+                                     14 	.globl _exti5
+                                     15 	.globl _exti0
+                                     16 	.globl _getSwitchState
+                                     17 	.globl _getStopState
+                                     18 	.globl _setMotor
+                                     19 	.globl _switchHandler
+                                     20 	.globl _stopHandler
+                                     21 ;--------------------------------------------------------
+                                     22 ; ram data
+                                     23 ;--------------------------------------------------------
+                                     24 	.area DATA
+                                     25 ;--------------------------------------------------------
+                                     26 ; ram data
+                                     27 ;--------------------------------------------------------
+                                     28 	.area INITIALIZED
+      000000                         29 _state:
+      000000                         30 	.ds 1
+                                     31 ;--------------------------------------------------------
+                                     32 ; Stack segment in internal ram 
+                                     33 ;--------------------------------------------------------
+                                     34 	.area	SSEG
+      000000                         35 __start__stack:
+      000000                         36 	.ds	1
+                                     37 
+                                     38 ;--------------------------------------------------------
+                                     39 ; absolute external ram data
+                                     40 ;--------------------------------------------------------
+                                     41 	.area DABS (ABS)
+                                     42 ;--------------------------------------------------------
+                                     43 ; interrupt vector 
+                                     44 ;--------------------------------------------------------
+                                     45 	.area HOME
+      000000                         46 __interrupt_vect:
+      000000 82v00u00u00             47 	int s_GSINIT ;reset
+      000004 82 00 00 00             48 	int 0x0000 ;trap
+      000008 82 00 00 00             49 	int 0x0000 ;int0
+      00000C 82 00 00 00             50 	int 0x0000 ;int1
+      000010 82 00 00 00             51 	int 0x0000 ;int2
+      000014 82 00 00 00             52 	int 0x0000 ;int3
+      000018 82 00 00 00             53 	int 0x0000 ;int4
+      00001C 82 00 00 00             54 	int 0x0000 ;int5
+      000020 82 00 00 00             55 	int 0x0000 ;int6
+      000024 82 00 00 00             56 	int 0x0000 ;int7
+      000028 82v00u00u00             57 	int _exti0 ;int8
+      00002C 82 00 00 00             58 	int 0x0000 ;int9
+      000030 82 00 00 00             59 	int 0x0000 ;int10
+      000034 82 00 00 00             60 	int 0x0000 ;int11
+      000038 82 00 00 00             61 	int 0x0000 ;int12
+      00003C 82v00u00u08             62 	int _exti5 ;int13
+      000040 82 00 00 00             63 	int 0x0000 ;int14
+      000044 82 00 00 00             64 	int 0x0000 ;int15
+      000048 82 00 00 00             65 	int 0x0000 ;int16
+      00004C 82 00 00 00             66 	int 0x0000 ;int17
+      000050 82 00 00 00             67 	int 0x0000 ;int18
+      000054 82 00 00 00             68 	int 0x0000 ;int19
+      000058 82 00 00 00             69 	int 0x0000 ;int20
+      00005C 82 00 00 00             70 	int 0x0000 ;int21
+      000060 82 00 00 00             71 	int 0x0000 ;int22
+      000064 82 00 00 00             72 	int 0x0000 ;int23
+      000068 82 00 00 00             73 	int 0x0000 ;int24
+      00006C 82 00 00 00             74 	int 0x0000 ;int25
+      000070 82 00 00 00             75 	int 0x0000 ;int26
+      000074 82 00 00 00             76 	int 0x0000 ;int27
+      000078 82 00 00 00             77 	int 0x0000 ;int28
+      00007C 82 00 00 00             78 	int 0x0000 ;int29
+                                     79 ;--------------------------------------------------------
+                                     80 ; global & static initialisations
+                                     81 ;--------------------------------------------------------
+                                     82 	.area HOME
+                                     83 	.area GSINIT
+                                     84 	.area GSFINAL
+                                     85 	.area GSINIT
+      000000                         86 __sdcc_gs_init_startup:
+      000000                         87 __sdcc_init_data:
+                                     88 ; stm8_genXINIT() start
+      000000 AEr00r00         [ 2]   89 	ldw x, #l_DATA
+      000003 27 07            [ 1]   90 	jreq	00002$
+      000005                         91 00001$:
+      000005 72 4FuFFuFF      [ 1]   92 	clr (s_DATA - 1, x)
+      000009 5A               [ 2]   93 	decw x
+      00000A 26 F9            [ 1]   94 	jrne	00001$
+      00000C                         95 00002$:
+      00000C AEr00r00         [ 2]   96 	ldw	x, #l_INITIALIZER
+      00000F 27 09            [ 1]   97 	jreq	00004$
+      000011                         98 00003$:
+      000011 D6uFFuFF         [ 1]   99 	ld	a, (s_INITIALIZER - 1, x)
+      000014 D7uFFuFF         [ 1]  100 	ld	(s_INITIALIZED - 1, x), a
+      000017 5A               [ 2]  101 	decw	x
+      000018 26 F7            [ 1]  102 	jrne	00003$
+      00001A                        103 00004$:
+                                    104 ; stm8_genXINIT() end
+                                    105 	.area GSFINAL
+      000000 CCr00r80         [ 2]  106 	jp	__sdcc_program_startup
+                                    107 ;--------------------------------------------------------
+                                    108 ; Home
+                                    109 ;--------------------------------------------------------
+                                    110 	.area HOME
+                                    111 	.area HOME
+      000080                        112 __sdcc_program_startup:
+      000080 CCr00rF0         [ 2]  113 	jp	_main
+                                    114 ;	return from main will return to caller
+                                    115 ;--------------------------------------------------------
+                                    116 ; code
+                                    117 ;--------------------------------------------------------
+                                    118 	.area CODE
+                                    119 ;	useless.c: 20: void exti0(void) __interrupt(8) {
+                                    120 ;	-----------------------------------------
+                                    121 ;	 function exti0
+                                    122 ;	-----------------------------------------
+      000000                        123 _exti0:
+                                    124 ;	useless.c: 22: EXTI_SR1 |= 1 << 0;
+      000000 72 10 50 A3      [ 1]  125 	bset	0x50a3, #0
+                                    126 ;	useless.c: 27: stopHandler();
+      000004 CDr00rAC         [ 4]  127 	call	_stopHandler
+      000007 80               [11]  128 	iret
+                                    129 ;	useless.c: 30: void exti5(void) __interrupt(13) {
+                                    130 ;	-----------------------------------------
+                                    131 ;	 function exti5
+                                    132 ;	-----------------------------------------
+      000008                        133 _exti5:
+                                    134 ;	useless.c: 32: EXTI_SR1 |= 1 << 5;
+      000008 AE 50 A3         [ 2]  135 	ldw	x, #0x50a3
+      00000B F6               [ 1]  136 	ld	a, (x)
+      00000C AA 20            [ 1]  137 	or	a, #0x20
+      00000E F7               [ 1]  138 	ld	(x), a
+                                    139 ;	useless.c: 41: switchHandler();
+      00000F CDr00r7C         [ 4]  140 	call	_switchHandler
+      000012 80               [11]  141 	iret
+                                    142 ;	useless.c: 44: int getSwitchState(void) { // 1 is on (need to switch off)
+                                    143 ;	-----------------------------------------
+                                    144 ;	 function getSwitchState
+                                    145 ;	-----------------------------------------
+      000013                        146 _getSwitchState:
+                                    147 ;	useless.c: 45: return (PE_IDR & (1 << 5)) == 0;
+      000013 AE 50 15         [ 2]  148 	ldw	x, #0x5015
+      000016 F6               [ 1]  149 	ld	a, (x)
+      000017 A4 20            [ 1]  150 	and	a, #0x20
+      000019 A1 00            [ 1]  151 	cp	a, #0x00
+      00001B 26 03            [ 1]  152 	jrne	00104$
+      00001D A6 01            [ 1]  153 	ld	a, #0x01
+      00001F 21                     154 	.byte 0x21
+      000020                        155 00104$:
+      000020 4F               [ 1]  156 	clr	a
+      000021                        157 00105$:
+      000021 97               [ 1]  158 	ld	xl, a
+      000022 49               [ 1]  159 	rlc	a
+      000023 4F               [ 1]  160 	clr	a
+      000024 A2 00            [ 1]  161 	sbc	a, #0x00
+      000026 95               [ 1]  162 	ld	xh, a
+      000027 81               [ 4]  163 	ret
+                                    164 ;	useless.c: 48: int getStopState(void) { // 1 is on (pusher is parked)
+                                    165 ;	-----------------------------------------
+                                    166 ;	 function getStopState
+                                    167 ;	-----------------------------------------
+      000028                        168 _getStopState:
+                                    169 ;	useless.c: 49: return PE_IDR & (1 << 0);
+      000028 AE 50 15         [ 2]  170 	ldw	x, #0x5015
+      00002B F6               [ 1]  171 	ld	a, (x)
+      00002C A4 01            [ 1]  172 	and	a, #0x01
+      00002E 5F               [ 1]  173 	clrw	x
+      00002F 97               [ 1]  174 	ld	xl, a
+      000030 81               [ 4]  175 	ret
+                                    176 ;	useless.c: 53: void setMotor(void) {
+                                    177 ;	-----------------------------------------
+                                    178 ;	 function setMotor
+                                    179 ;	-----------------------------------------
+      000031                        180 _setMotor:
+                                    181 ;	useless.c: 54: switch (state) {
+      000031 C6u00u00         [ 1]  182 	ld	a, _state+0
+      000034 95               [ 1]  183 	ld	xh, a
+                                    184 ;	useless.c: 56: PB_ODR &= ~MOTOR_A;
+      000035 90 AE 50 05      [ 2]  185 	ldw	y, #0x5005
+      000039 88               [ 1]  186 	push	a
+      00003A 90 F6            [ 1]  187 	ld	a, (y)
+      00003C 97               [ 1]  188 	ld	xl, a
+      00003D 84               [ 1]  189 	pop	a
+                                    190 ;	useless.c: 54: switch (state) {
+      00003E A1 00            [ 1]  191 	cp	a, #0x00
+      000040 27 29            [ 1]  192 	jreq	00104$
+      000042 9E               [ 1]  193 	ld	a, xh
+      000043 A1 01            [ 1]  194 	cp	a, #0x01
+      000045 27 07            [ 1]  195 	jreq	00101$
+      000047 9E               [ 1]  196 	ld	a, xh
+      000048 A1 02            [ 1]  197 	cp	a, #0x02
+      00004A 27 0F            [ 1]  198 	jreq	00102$
+      00004C 20 1D            [ 2]  199 	jra	00104$
+                                    200 ;	useless.c: 55: case FORWARD:
+      00004E                        201 00101$:
+                                    202 ;	useless.c: 56: PB_ODR &= ~MOTOR_A;
+      00004E 9F               [ 1]  203 	ld	a, xl
+      00004F A4 FD            [ 1]  204 	and	a, #0xfd
+      000051 AE 50 05         [ 2]  205 	ldw	x, #0x5005
+      000054 F7               [ 1]  206 	ld	(x), a
+                                    207 ;	useless.c: 57: PB_ODR |= MOTOR_B;
+      000055 72 10 50 05      [ 1]  208 	bset	0x5005, #0
+                                    209 ;	useless.c: 58: break;
+      000059 20 1B            [ 2]  210 	jra	00106$
+                                    211 ;	useless.c: 59: case BACKWARD:
+      00005B                        212 00102$:
+                                    213 ;	useless.c: 60: PB_ODR &= ~MOTOR_B;
+      00005B 9F               [ 1]  214 	ld	a, xl
+      00005C A4 FE            [ 1]  215 	and	a, #0xfe
+      00005E AE 50 05         [ 2]  216 	ldw	x, #0x5005
+      000061 F7               [ 1]  217 	ld	(x), a
+                                    218 ;	useless.c: 61: PB_ODR |= MOTOR_A;
+      000062 AE 50 05         [ 2]  219 	ldw	x, #0x5005
+      000065 F6               [ 1]  220 	ld	a, (x)
+      000066 AA 02            [ 1]  221 	or	a, #0x02
+      000068 F7               [ 1]  222 	ld	(x), a
+                                    223 ;	useless.c: 62: break;
+      000069 20 0B            [ 2]  224 	jra	00106$
+                                    225 ;	useless.c: 64: default:
+      00006B                        226 00104$:
+                                    227 ;	useless.c: 65: PB_ODR &= ~(MOTOR_A | MOTOR_B);
+      00006B 9F               [ 1]  228 	ld	a, xl
+      00006C A4 FC            [ 1]  229 	and	a, #0xfc
+      00006E AE 50 05         [ 2]  230 	ldw	x, #0x5005
+      000071 F7               [ 1]  231 	ld	(x), a
+                                    232 ;	useless.c: 66: state = IDLE;
+      000072 72 5Fu00u00      [ 1]  233 	clr	_state+0
+                                    234 ;	useless.c: 68: }
+      000076                        235 00106$:
+      000076 81               [ 4]  236 	ret
+                                    237 ;	useless.c: 71: void error(void) {
+                                    238 ;	-----------------------------------------
+                                    239 ;	 function error
+                                    240 ;	-----------------------------------------
+      000077                        241 _error:
+                                    242 ;	useless.c: 72: state = IDLE;
+      000077 72 5Fu00u00      [ 1]  243 	clr	_state+0
+                                    244 ;	useless.c: 73: return;
+      00007B 81               [ 4]  245 	ret
+                                    246 ;	useless.c: 77: void switchHandler(void) {
+                                    247 ;	-----------------------------------------
+                                    248 ;	 function switchHandler
+                                    249 ;	-----------------------------------------
+      00007C                        250 _switchHandler:
+                                    251 ;	useless.c: 79: if (getSwitchState()) { // on
+      00007C CDr00r13         [ 4]  252 	call	_getSwitchState
+      00007F 5D               [ 2]  253 	tnzw	x
+      000080 27 09            [ 1]  254 	jreq	00112$
+                                    255 ;	useless.c: 80: switch (state) {
+      000082 C6u00u00         [ 1]  256 	ld	a, _state+0
+                                    257 ;	useless.c: 86: state = FORWARD;
+      000085 35 01u00u00      [ 1]  258 	mov	_state+0, #0x01
+                                    259 ;	useless.c: 88: }
+      000089 20 1E            [ 2]  260 	jra	00113$
+      00008B                        261 00112$:
+                                    262 ;	useless.c: 90: switch (state) {
+      00008B C6u00u00         [ 1]  263 	ld	a, _state+0
+      00008E 95               [ 1]  264 	ld	xh, a
+      00008F A1 00            [ 1]  265 	cp	a, #0x00
+      000091 27 16            [ 1]  266 	jreq	00113$
+      000093 9E               [ 1]  267 	ld	a, xh
+      000094 A1 01            [ 1]  268 	cp	a, #0x01
+      000096 27 07            [ 1]  269 	jreq	00107$
+      000098 9E               [ 1]  270 	ld	a, xh
+      000099 A1 02            [ 1]  271 	cp	a, #0x02
+      00009B 27 0C            [ 1]  272 	jreq	00113$
+      00009D 20 06            [ 2]  273 	jra	00109$
+                                    274 ;	useless.c: 94: case FORWARD:
+      00009F                        275 00107$:
+                                    276 ;	useless.c: 96: state = BACKWARD;
+      00009F 35 02u00u00      [ 1]  277 	mov	_state+0, #0x02
+                                    278 ;	useless.c: 97: break;
+      0000A3 20 04            [ 2]  279 	jra	00113$
+                                    280 ;	useless.c: 101: default:
+      0000A5                        281 00109$:
+                                    282 ;	useless.c: 102: state = IDLE;
+      0000A5 72 5Fu00u00      [ 1]  283 	clr	_state+0
+                                    284 ;	useless.c: 104: }
+      0000A9                        285 00113$:
+                                    286 ;	useless.c: 106: setMotor();
+      0000A9 CCr00r31         [ 2]  287 	jp	_setMotor
+                                    288 ;	useless.c: 109: void stopHandler(void) {
+                                    289 ;	-----------------------------------------
+                                    290 ;	 function stopHandler
+                                    291 ;	-----------------------------------------
+      0000AC                        292 _stopHandler:
+                                    293 ;	useless.c: 111: if (getStopState()) { // parked
+      0000AC CDr00r28         [ 4]  294 	call	_getStopState
+      0000AF 5D               [ 2]  295 	tnzw	x
+      0000B0 27 25            [ 1]  296 	jreq	00112$
+                                    297 ;	useless.c: 112: switch (state) {
+      0000B2 C6u00u00         [ 1]  298 	ld	a, _state+0
+      0000B5 95               [ 1]  299 	ld	xh, a
+      0000B6 A1 00            [ 1]  300 	cp	a, #0x00
+      0000B8 27 33            [ 1]  301 	jreq	00113$
+      0000BA 9E               [ 1]  302 	ld	a, xh
+      0000BB A1 01            [ 1]  303 	cp	a, #0x01
+      0000BD 27 07            [ 1]  304 	jreq	00102$
+      0000BF 9E               [ 1]  305 	ld	a, xh
+      0000C0 A1 02            [ 1]  306 	cp	a, #0x02
+      0000C2 27 07            [ 1]  307 	jreq	00103$
+      0000C4 20 0B            [ 2]  308 	jra	00104$
+                                    309 ;	useless.c: 116: case FORWARD:
+      0000C6                        310 00102$:
+                                    311 ;	useless.c: 118: error();
+      0000C6 CDr00r77         [ 4]  312 	call	_error
+                                    313 ;	useless.c: 119: break;
+      0000C9 20 22            [ 2]  314 	jra	00113$
+                                    315 ;	useless.c: 120: case BACKWARD:
+      0000CB                        316 00103$:
+                                    317 ;	useless.c: 122: state = IDLE;
+      0000CB 72 5Fu00u00      [ 1]  318 	clr	_state+0
+                                    319 ;	useless.c: 123: break;
+      0000CF 20 1C            [ 2]  320 	jra	00113$
+                                    321 ;	useless.c: 124: default:
+      0000D1                        322 00104$:
+                                    323 ;	useless.c: 125: state = IDLE;
+      0000D1 72 5Fu00u00      [ 1]  324 	clr	_state+0
+                                    325 ;	useless.c: 127: }
+      0000D5 20 16            [ 2]  326 	jra	00113$
+      0000D7                        327 00112$:
+                                    328 ;	useless.c: 129: switch (state) {
+      0000D7 C6u00u00         [ 1]  329 	ld	a, _state+0
+      0000DA 95               [ 1]  330 	ld	xh, a
+      0000DB A1 00            [ 1]  331 	cp	a, #0x00
+      0000DD 27 0E            [ 1]  332 	jreq	00113$
+      0000DF 9E               [ 1]  333 	ld	a, xh
+      0000E0 A1 01            [ 1]  334 	cp	a, #0x01
+      0000E2 27 09            [ 1]  335 	jreq	00113$
+      0000E4 9E               [ 1]  336 	ld	a, xh
+      0000E5 A1 02            [ 1]  337 	cp	a, #0x02
+      0000E7 27 04            [ 1]  338 	jreq	00113$
+                                    339 ;	useless.c: 140: state = BACKWARD;
+      0000E9 35 02u00u00      [ 1]  340 	mov	_state+0, #0x02
+                                    341 ;	useless.c: 142: }
+      0000ED                        342 00113$:
+                                    343 ;	useless.c: 144: switchHandler(); // switch has higher priority and calls setMotor()
+      0000ED CCr00r7C         [ 2]  344 	jp	_switchHandler
+                                    345 ;	useless.c: 156: int main(void) {
+                                    346 ;	-----------------------------------------
+                                    347 ;	 function main
+                                    348 ;	-----------------------------------------
+      0000F0                        349 _main:
+                                    350 ;	useless.c: 157: CLK_PCKENR2 = 0; // disable boot ROM clock
+      0000F0 35 00 50 C4      [ 1]  351 	mov	0x50c4+0, #0x00
+                                    352 ;	useless.c: 161: PA_CR1 = 0xFF; // pull-up
+      0000F4 35 FF 50 03      [ 1]  353 	mov	0x5003+0, #0xff
+                                    354 ;	useless.c: 162: PB_CR1 = 0xFF; // pull-up
+      0000F8 35 FF 50 08      [ 1]  355 	mov	0x5008+0, #0xff
+                                    356 ;	useless.c: 163: PC_CR1 = 0xFF; // pull-up
+      0000FC 35 FF 50 0D      [ 1]  357 	mov	0x500d+0, #0xff
+                                    358 ;	useless.c: 164: PD_CR1 = 0xFF; // pull-up
+      000100 35 FF 50 12      [ 1]  359 	mov	0x5012+0, #0xff
+                                    360 ;	useless.c: 165: PE_CR1 = 0xFF; // pull-up
+      000104 35 FF 50 17      [ 1]  361 	mov	0x5017+0, #0xff
+                                    362 ;	useless.c: 166: PF_CR1 = 0x01; // pull-up
+      000108 35 01 50 1C      [ 1]  363 	mov	0x501c+0, #0x01
+                                    364 ;	useless.c: 169: PB_DDR |= MOTOR_A | MOTOR_B; // output
+      00010C AE 50 07         [ 2]  365 	ldw	x, #0x5007
+      00010F F6               [ 1]  366 	ld	a, (x)
+      000110 AA 03            [ 1]  367 	or	a, #0x03
+      000112 F7               [ 1]  368 	ld	(x), a
+                                    369 ;	useless.c: 175: PE_CR2 |= (1 << 0) | (1 << 5); // interrupt
+      000113 AE 50 18         [ 2]  370 	ldw	x, #0x5018
+      000116 F6               [ 1]  371 	ld	a, (x)
+      000117 AA 21            [ 1]  372 	or	a, #0x21
+      000119 F7               [ 1]  373 	ld	(x), a
+                                    374 ;	useless.c: 178: EXTI_CR1 = (3) << 0; // any edge on bit 0
+      00011A 35 03 50 A0      [ 1]  375 	mov	0x50a0+0, #0x03
+                                    376 ;	useless.c: 179: EXTI_CR2 = (3) << 2; // any edge on bit 5
+      00011E 35 0C 50 A1      [ 1]  377 	mov	0x50a1+0, #0x0c
+                                    378 ;	useless.c: 181: state = IDLE;
+      000122 72 5Fu00u00      [ 1]  379 	clr	_state+0
+                                    380 ;	useless.c: 182: setMotor();
+      000126 CDr00r31         [ 4]  381 	call	_setMotor
+                                    382 ;	useless.c: 184: rim(); // enable interrupts
+      000129 9A               [ 1]  383 	rim 
+                                    384 ;	useless.c: 186: CFG_GCR |= CFG_GCR_AL; // interrupt-only activation level
+      00012A AE 7F 60         [ 2]  385 	ldw	x, #0x7f60
+      00012D F6               [ 1]  386 	ld	a, (x)
+      00012E AA 02            [ 1]  387 	or	a, #0x02
+      000130 F7               [ 1]  388 	ld	(x), a
+                                    389 ;	useless.c: 187: halt();
+      000131 8E               [10]  390 	halt 
+                                    391 ;	useless.c: 188: return 0;
+      000132 5F               [ 1]  392 	clrw	x
+      000133 81               [ 4]  393 	ret
+                                    394 	.area CODE
+                                    395 	.area INITIALIZER
+      000000                        396 __xinit__state:
+      000000 00                     397 	.db #0x00	; 0
+                                    398 	.area CABS (ABS)
