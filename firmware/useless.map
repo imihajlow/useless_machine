@@ -15,37 +15,42 @@ Area                                    Addr        Size        Decimal Bytes (A
      00000000  s_CABS                          
      00000000  s_DABS                          
      00000000  s__CODE                         
-     00000001  l_INITIALIZED                   
-     00000001  l_INITIALIZER                   
      00000001  l_SSEG                          
      00000001  s_DATA                          
      00000001  s_INITIALIZED                   
-     00000002  s_SSEG                          
      00000003  l_GSFINAL                       
+     00000006  l_INITIALIZED                   
+     00000006  l_INITIALIZER                   
+     00000007  s_SSEG                          
      0000001A  l_GSINIT                        
      00000083  l_HOME                          
-     00000134  l_CODE                          
+     000002F7  l_CODE                          
      00008000  s_HOME                          
      00008083  s_GSINIT                        
      0000809D  s_GSFINAL                       
      000080A0  s_CODE                          
-     000081D4  s_INITIALIZER                   
+     00008397  s_INITIALIZER                   
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-INITIALIZED                         00000001    00000001 =           1. bytes (REL,CON)
+INITIALIZED                         00000001    00000006 =           6. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
+     00000001  _irritationCount                   useless
+     00000004  _firstEvent                        useless
+     00000005  _isSleeping                        useless
+     00000006  _isIdleTimerRunning                useless
+
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-SSEG                                00000002    00000001 =           1. bytes (REL,CON)
+SSEG                                00000007    00000001 =           1. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -81,25 +86,40 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CODE                                000080A0    00000134 =         308. bytes (REL,CON)
+CODE                                000080A0    000002F7 =         759. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
      000080A0  _exti0                             useless
      000080A8  _exti5                             useless
-     000080B3  _getSwitchState                    useless
-     000080C8  _getStopState                      useless
-     000080D1  _setMotor                          useless
-     00008117  _error                             useless
-     0000811C  _switchHandler                     useless
-     0000814C  _stopHandler                       useless
-     00008190  _main                              useless
+     000080B3  _tim1                              useless
+     000080D8  _tim3                              useless
+     000080E0  _startSleep                        useless
+     0000810E  _getSwitchState                    useless
+     00008123  _getStopState                      useless
+     0000812C  _motorForward                      useless
+     00008138  _motorBackward                     useless
+     00008144  _motorStop                         useless
+     0000814C  _setMotor                          useless
+     0000817B  _error                             useless
+     00008180  _automata                          useless
+     00008224  _switchHandler                     useless
+     00008239  _stopHandler                       useless
+     00008241  _sleepHandler                      useless
+     0000824B  _setupTimer                        useless
+     0000826B  _enableIdleTimer                   useless
+     000082B5  _keepIdleTimer                     useless
+     000082DB  _disableIdleTimer                  useless
+     000082F3  _getDelayForward                   useless
+     00008311  _getDelayBackward                  useless
+     0000833C  _main                              useless
+
 ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-INITIALIZER                         000081D4    00000001 =           1. bytes (REL,CON)
+INITIALIZER                         00008397    00000006 =           6. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------

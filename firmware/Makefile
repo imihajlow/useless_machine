@@ -14,3 +14,4 @@ clean:
 
 %.hex: %.ihx
 	cp $^ $@
+	cp $@ ~/vm\ shared
