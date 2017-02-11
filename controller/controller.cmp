@@ -1,0 +1,143 @@
+Cmp-Mod V01 Created by CvPcb (2013-jul-07)-stable date = Вт. 12 мая 2015 20:47:18
+
+BeginCmp
+TimeStamp = /554E16AB;
+Reference = BT1;
+ValeurCmp = 4.5V;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /554E341F;
+Reference = BT2;
+ValeurCmp = 3V;
+IdModule  = BH800;
+EndCmp
+
+BeginCmp
+TimeStamp = /554E30C0;
+Reference = C1;
+ValeurCmp = 100n;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /554E30C6;
+Reference = C2;
+ValeurCmp = 100n;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /554E1C14;
+Reference = C3;
+ValeurCmp = 100n;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /554E1C0E;
+Reference = C4;
+ValeurCmp = 100n;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /554E1BFD;
+Reference = C5;
+ValeurCmp = 100n;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /554E1C1C;
+Reference = C6;
+ValeurCmp = 1u;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /555234F3;
+Reference = C7;
+ValeurCmp = 100n;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /555234ED;
+Reference = C8;
+ValeurCmp = 1u;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /554E3523;
+Reference = JP1;
+ValeurCmp = Brigde;
+IdModule  = Bridge;
+EndCmp
+
+BeginCmp
+TimeStamp = /554E3646;
+Reference = P1;
+ValeurCmp = ISP;
+IdModule  = PIN_ARRAY_5x1;
+EndCmp
+
+BeginCmp
+TimeStamp = /554E141C;
+Reference = P2;
+ValeurCmp = MOTOR;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /554E1FCA;
+Reference = P3;
+ValeurCmp = SWITCH;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /554E1FD0;
+Reference = P4;
+ValeurCmp = STOP;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /55524568;
+Reference = P6;
+ValeurCmp = IO;
+IdModule  = pin_array_4x2;
+EndCmp
+
+BeginCmp
+TimeStamp = /554E2D7F;
+Reference = R7;
+ValeurCmp = 100k;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /554E2DCE;
+Reference = R8;
+ValeurCmp = 100k;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /554E0BF0;
+Reference = U1;
+ValeurCmp = STM8L152C;
+IdModule  = LQFP48;
+EndCmp
+
+BeginCmp
+TimeStamp = /5552326F;
+Reference = U2;
+ValeurCmp = SI9986;
+IdModule  = SO8E;
+EndCmp
+
+EndListe

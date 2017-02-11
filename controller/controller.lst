@@ -1,0 +1,48 @@
+eeschema (2013-jul-07)-stable  >> Creation date: Вт. 12 мая 2015 22:40:58
+#Cmp ( order = Reference )
+| BT1        4.5V        
+| BT2        3V          
+| C1         100n        
+| C2         100n        
+| C3         100n        
+| C4         100n        
+| C5         100n        
+| C6         1u          
+| C7         100n        
+| C8         1u          
+| JP1        Brigde      
+| P1         ISP         
+| P2         MOTOR       
+| P3         SWITCH      
+| P4         STOP        
+| P6         IO          
+| R7         100k        
+| R8         100k        
+| U1         STM8L152C   
+| U2         SI9986      
+#End Cmp
+
+#Cmp ( order = Value )
+| 4.5V         BT1       
+| 3V           BT2       
+| 100n         C1        
+| 100n         C2        
+| 100n         C3        
+| 100n         C4        
+| 100n         C5        
+| 100n         C7        
+| 1u           C6        
+| 1u           C8        
+| Brigde       JP1       
+| ISP          P1        
+| MOTOR        P2        
+| SWITCH       P3        
+| STOP         P4        
+| IO           P6        
+| 100k         R7        
+| 100k         R8        
+| SI9986       U2        
+| STM8L152C    U1        
+#End Cmp
+
+#End List
